@@ -9,6 +9,7 @@ interface AdapterParams {
     mockServiceURL: string;
     recorderServiceHTTP_URL: string;
     recorderServiceGRPC_URL: string;
+    transactionProperties?: any;
 }
 
 const ALL_ACTIONS = [
@@ -62,6 +63,12 @@ export function createAdapterFiles(params: AdapterParams) {
         path: "./np_no_config.yaml",
         content: yaml.dump(createNpNoConfig(params)),
     });
+    if (params.transactionProperties) {
+        files.push({
+            path: "./transaction_properties.yaml",
+            content: yaml.dump(params.transactionProperties),
+        });
+    }
     return files;
 }
 
@@ -112,6 +119,8 @@ function createAdapterYaml(params: AdapterParams) {
                 moduleType: type,
                 configServiceURL: params.configServiceURL,
                 mockServiceURL: params.mockServiceURL,
+                transactionPropertiesPath:
+                    "./config/transaction_properties.yaml",
             },
         };
     };
