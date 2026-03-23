@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API SERVICE VALIDATIONS</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="content">
+        <h2>List of validations of api</h2>
+        <ul>
+<li><p><strong>search</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>SEARCH_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;search&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;search&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>SEARCH_CATEGORY_CODE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CATEGORY_CODE</strong></h4>
+<ul>
+<li>$.message.intent.category.descriptor.code must be present in the payload</li>
+</ul>
+<h4><strong>VALID_ENUM_CATEGORY_CODE</strong></h4>
+<ul>
+<li>All elements of $.message.intent.category.descriptor.code must be in [&quot;GOLD_LOAN&quot;, &quot;PERSONAL_LOAN&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.intent.category.descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>SEARCH_PAYMENT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_COLLECTED_BY</strong></h4>
+<ul>
+<li>$.message.intent.payment.collected_by must be present in the payload</li>
+</ul>
+<h4><strong>VALID_PAYMENT_COLLECTED_BY_ENUM</strong></h4>
+<ul>
+<li>At least one of $.message.intent.payment.collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.intent.payment.collected_by is not in the payload
+</code></pre>
+</blockquote>
+<ul>
+<li><p><strong>REQUIRED_PAYMENT_TAGS_GROUPS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_BUYER_FINDER_FEES_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.intent.payment.tags[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_BUYER_FINDER_FEES_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.intent.payment.tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_TYPE&quot;, &quot;BUYER_FINDER_FEES_PERCENTAGE&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.intent.payment.tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_BUYER_FINDER_FEES_TYPE_VALUE</strong></h4>
+<ul>
+<li>All elements of $.message.intent.payment.tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[?(@.descriptor.code==&#39;BUYER_FINDER_FEES_TYPE&#39;)].value must be in [&quot;percent-annualized&quot;, &quot;percent&quot;, &quot;amount&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_SETTLEMENT_TERMS_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.intent.payment.tags[*].descriptor.code must be in [&quot;SETTLEMENT_TERMS&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_SETTLEMENT_TERMS_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.intent.payment.tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[*].descriptor.code must be in [&quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;OFFLINE_CONTRACT&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.intent.payment.tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>on_search</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>ON_SEARCH_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_search&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_search&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4><strong>ON_SEARCH_CATALOG_NAME</strong></h4>
+<ul>
+<li><p>$.message.catalog.descriptor.name must be present in the payload</p>
+</li>
+<li><p><strong>ON_SEARCH_CATEGORIES</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CATEGORIES_NAME</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].categories[</em>].descriptor.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CATEGORIES_CODE</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].categories[</em>].descriptor.code must be present in the payload</li>
+</ul>
+<h4><strong>VALID_ENUM_CATEGORIES_CODE</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].categories[</em>].descriptor.code must be in [&quot;PERSONAL_LOAN&quot;, &quot;BUREAU_LOAN&quot;, &quot;AA_PERSONAL_LOAN&quot;, &quot;GOLD_LOAN&quot;, &quot;AA_LOAN&quot;, &quot;LOAN&quot;, &quot;PERSONAL_INFORMATION&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_CATEGORIES_ID</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].categories[</em>].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CATEGORIES_PARENT_ID</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].categories[</em>].parent_category_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- any of [&quot;BUREAU_LOAN&quot;, &quot;AA_LOAN&quot;, &quot;PERSONAL_LOAN&quot;, &quot;AA_PERSONAL_LOAN&quot;, &quot;GOLD_LOAN&quot;] are in $.message.catalog.providers[*].categories[*].descriptor.code
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_SEARCH_PROVIDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PROVIDER_ID</strong></h4>
+<ul>
+<li>$.message.catalog.providers[*].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_NAME</strong></h4>
+<ul>
+<li>$.message.catalog.providers[*].descriptor.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_IMAGES_URL</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].descriptor.images[</em>].url must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_IMAGES_SIZE_TYPE</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].descriptor.images[</em>].size_type must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SEARCH_PROVIDER_CONTACT_INFO</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTACT_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.catalog.providers[<em>].tags[</em>].descriptor.code must be in [&quot;CONTACT_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_CONTACT_INFO_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].tags[?(@.descriptor.code==&#39;CONTACT_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;GRO_NAME&quot;, &quot;GRO_EMAIL&quot;, &quot;GRO_CONTACT_NUMBER&quot;, &quot;CUSTOMER_SUPPORT_LINK&quot;, &quot;CUSTOMER_SUPPORT_CONTACT_NUMBER&quot;, &quot;CUSTOMER_SUPPORT_EMAIL&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.catalog.providers[*].tags[?(@.descriptor.code==&#39;CONTACT_INFO&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_SEARCH_PROVIDER_LSP_INFO</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_LSP_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.catalog.providers[<em>].tags[</em>].descriptor.code must be in [&quot;LSP_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_LSP_INFO_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].tags[?(@.descriptor.code==&#39;LSP_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;LSP_NAME&quot;, &quot;LSP_EMAIL&quot;, &quot;LSP_CONTACT_NUMBER&quot;, &quot;LSP_ADDRESS&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.catalog.providers[*].tags[?(@.descriptor.code==&#39;LSP_INFO&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_SEARCH_PAYMENT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_COLLECTED_BY</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].payments[</em>].collected_by must be present in the payload</li>
+</ul>
+<h4><strong>VALID_PAYMENT_COLLECTED_BY_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].payments[</em>].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_BUYER_FINDER_FEES_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.catalog.providers[<em>].payments[</em>].tags[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_BUYER_FINDER_FEES_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].payments[</em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_TYPE&quot;, &quot;BUYER_FINDER_FEES_PERCENTAGE&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.catalog.providers[*].payments[*].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_BUYER_FINDER_FEES_TYPE_VALUE</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].payments[</em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[?(@.descriptor.code==&#39;BUYER_FINDER_FEES_TYPE&#39;)].value must be in [&quot;PERCENT_ANNUALIZED&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_SETTLEMENT_TERMS_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.catalog.providers[<em>].payments[</em>].tags[*].descriptor.code must be in [&quot;SETTLEMENT_TERMS&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_SETTLEMENT_TERMS_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].payments[</em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;STATIC_TERMS&quot;, &quot;OFFLINE_CONTRACT&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.catalog.providers[*].payments[*].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_SEARCH_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].items[</em>].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_CATEGORY_IDS</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].items[</em>].category_ids[*] must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_DESCRIPTOR_NAME</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].items[</em>].descriptor.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_GENERAL_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.catalog.providers[<em>].items[</em>].tags[*].descriptor.code must be in [&quot;GENERAL_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_GENERAL_INFO_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].items[</em>].tags[?(@.descriptor.code==&#39;GENERAL_INFO&#39;)].list[*].descriptor.code must be in [&quot;MIN_INTEREST_RATE&quot;, &quot;MAX_INTEREST_RATE&quot;, &quot;MIN_TENURE&quot;, &quot;MAX_TENURE&quot;, &quot;MIN_LOAN_AMOUNT&quot;, &quot;MAX_LOAN_AMOUNT&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.catalog.providers[*].items[*].tags[?(@.descriptor.code==&#39;GENERAL_INFO&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_XINPUT</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].items[</em>].xinput.required must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_FORM_URL</strong></h4>
+<ul>
+<li>$.message.catalog.providers[<em>].items[</em>].xinput.form.url must be present in the payload</li>
+</ul>
+<h4><strong>VALID_XINPUT_HEADINGS_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.catalog.providers[<em>].items[</em>].xinput.head.headings[*] must be in [&quot;KYC&quot;, &quot;BUREAU_CONSENT&quot;, &quot;AA_CONSENT&quot;, &quot;Personal Information&quot;, &quot;Set Loan Amount&quot;, &quot;Know your Customer&quot;, &quot;Account Information&quot;, &quot;Emandate&quot;, &quot;Loan Agreement&quot;, &quot;PERSONAL_INFORMATION&quot;, &quot;Loan Details&quot;]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>select</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>SELECT_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;select&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;select&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4><strong>SELECT_PROVIDER_ID</strong></h4>
+<ul>
+<li><p>$.message.order.provider.id must be present in the payload</p>
+</li>
+<li><p><strong>SELECT_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>SELECT_XINPUT_PERSONAL_LOAN</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>REQUIRED_XINPUT_HEAD_INDEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MIN</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.min must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_CUR</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.cur must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MAX</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.max must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>on_select</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>ON_SELECT_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_select&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_select&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_PROVIDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PROVIDER_ID</strong></h4>
+<ul>
+<li>$.message.order.provider.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_NAME</strong></h4>
+<ul>
+<li>$.message.order.provider.descriptor.name must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_PROVIDER_LOCATIONS_GOLD</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PROVIDER_LOCATIONS</strong></h4>
+<ul>
+<li>$.message.order.provider.locations[*].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_LOCATION_GPS</strong></h4>
+<ul>
+<li>$.message.order.provider.locations[*].gps must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_LOCATION_ADDRESS</strong></h4>
+<ul>
+<li>$.message.order.provider.locations[*].address must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_PROVIDER_TAGS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTACT_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.provider.tags[*].descriptor.code must be in [&quot;CONTACT_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_CONTACT_INFO_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.order.provider.tags[?(@.descriptor.code==&#39;CONTACT_INFO&#39;)].list[*].descriptor.code must be in [&quot;GRO_NAME&quot;, &quot;GRO_EMAIL&quot;, &quot;GRO_CONTACT_NUMBER&quot;, &quot;GRO_DESIGNATION&quot;, &quot;GRO_ADDRESS&quot;, &quot;CUSTOMER_SUPPORT_LINK&quot;, &quot;CUSTOMER_SUPPORT_CONTACT_NUMBER&quot;, &quot;CUSTOMER_SUPPORT_EMAIL&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.provider.tags[?(@.descriptor.code==&#39;CONTACT_INFO&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_LSP_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.provider.tags[*].descriptor.code must be in [&quot;LSP_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_LSP_INFO_LIST</strong></h4>
+<ul>
+<li>All elements of $.message.order.provider.tags[?(@.descriptor.code==&#39;LSP_INFO&#39;)].list[*].descriptor.code must be in [&quot;LSP_NAME&quot;, &quot;LSP_EMAIL&quot;, &quot;LSP_CONTACT_NUMBER&quot;, &quot;LSP_ADDRESS&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.provider.tags[?(@.descriptor.code==&#39;LSP_INFO&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_SELECT_ITEMS_BASIC</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_DESCRIPTOR_CODE</strong></h4>
+<ul>
+<li>$.message.order.items[*].descriptor.code must be present in the payload</li>
+</ul>
+<h4><strong>VALID_ITEM_DESCRIPTOR_CODE_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.items[*].descriptor.code must be in [&quot;LOAN&quot;, &quot;PERSONAL_LOAN&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_DESCRIPTOR_NAME</strong></h4>
+<ul>
+<li>$.message.order.items[*].descriptor.name must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_1_AA_CONSENT_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONSENT_INFO_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;CONSENT_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_CONSENT_HANDLER</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;CONSENT_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;CONSENT_HANDLER&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_1_AA_CONSENT_XINPUT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_FORM</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.form.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_FORM_RESPONSE</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.form_response.status must be present in the payload</li>
+</ul>
+<h4><strong>VALID_XINPUT_FORM_RESPONSE_STATUS</strong></h4>
+<ul>
+<li>All elements of $.message.order.items[*].xinput.form_response.status must be in [&quot;PENDING&quot;, &quot;SUCCESS&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_FORM_RESPONSE_SUBMISSION_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.form_response.submission_id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_ITEMS_PRICE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_PRICE</strong></h4>
+<ul>
+<li>$.message.order.items[*].price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_PRICE_CURRENCY</strong></h4>
+<ul>
+<li>All elements of $.message.order.items[*].price.currency must be in [&quot;INR&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_LOAN_INFO</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_LOAN_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;LOAN_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_LOAN_INFO_LIST_COMMON</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;LOAN_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;INTEREST_RATE&quot;, &quot;TERM&quot;, &quot;INTEREST_RATE_TYPE&quot;, &quot;APPLICATION_FEE&quot;, &quot;FORECLOSURE_FEE&quot;, &quot;INTEREST_RATE_CONVERSION_CHARGE&quot;, &quot;DELAY_PENALTY_FEE&quot;, &quot;OTHER_PENALTY_FEE&quot;, &quot;ANNUAL_PERCENTAGE_RATE&quot;, &quot;REPAYMENT_FREQUENCY&quot;, &quot;NUMBER_OF_INSTALLMENTS_OF_REPAYMENT&quot;, &quot;TNC_LINK&quot;, &quot;COOL_OFF_PERIOD&quot;, &quot;INSTALLMENT_AMOUNT&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.items[*].tags[?(@.descriptor.code==&#39;LOAN_INFO&#39;)].list[*].descriptor.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_LOAN_INFO_LTV_RATIO_GOLD</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[?(@.descriptor.code==&#39;LOAN&#39;)].tags[?(@.descriptor.code==&#39;LOAN_INFO&#39;)].list[*].descriptor.code must be in [&quot;LTV_RATIO&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_QUOTE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_QUOTE_ID</strong></h4>
+<ul>
+<li><p>$.message.order.quote.id must be present in the payload</p>
+</li>
+<li><p><strong>REQUIRED_QUOTE_PRICE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_QUOTE_PRICE_VALUE</strong></h4>
+<ul>
+<li>$.message.order.quote.price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_PRICE_CURRENCY</strong></h4>
+<ul>
+<li>All elements of $.message.order.quote.price.currency must be in [&quot;INR&quot;]</li>
+</ul>
+</li>
+<li><p><strong>REQUIRED_QUOTE_BREAKUP</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_QUOTE_BREAKUP_TITLE</strong></h4>
+<ul>
+<li>$.message.order.quote.breakup[*].title must be present in the payload</li>
+</ul>
+<h4><strong>VALID_QUOTE_BREAKUP_TITLE_ENUM</strong></h4>
+<ul>
+<li>At least one of $.message.order.quote.breakup[*].title must be in [&quot;PRINCIPAL&quot;, &quot;INTEREST&quot;, &quot;PROCESSING_FEE&quot;, &quot;OTHER_UPFRONT_CHARGES&quot;, &quot;INSURANCE_CHARGES&quot;, &quot;NET_DISBURSED_AMOUNT&quot;, &quot;OTHER_CHARGES&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_BREAKUP_PRICE</strong></h4>
+<ul>
+<li>$.message.order.quote.breakup[*].price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_BREAKUP_PRICE_CURRENCY</strong></h4>
+<ul>
+<li>All elements of $.message.order.quote.breakup[*].price.currency must be in [&quot;INR&quot;]</li>
+</ul>
+</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_TTL</strong></h4>
+<ul>
+<li>$.message.order.quote.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_FULFILLMENT_GOLD</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_FULFILLMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].type must be in [&quot;LOAN&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].type is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_FULFILLMENT_AGENT_NAME</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].agent.person.name must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].agent.person.name is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_FULFILLMENT_AGENT_CONTACT</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].agent.contact.phone must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].agent.contact.phone is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_XINPUT_COMMON</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_REQUIRED</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.required must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_FORM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.form.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_FORM_URL</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.form.url must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_XINPUT_PERSONAL_LOAN</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>REQUIRED_XINPUT_HEAD_INDEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MIN</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.min must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_CUR</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.cur must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MAX</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.max must be present in the payload</li>
+</ul>
+</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_DESCRIPTOR_NAME</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.descriptor.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_HEADINGS</strong></h4>
+<ul>
+<li>$.message.order.items[<em>].xinput.head.headings[</em>] must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_SELECT_2_OFFER_XINPUT_GOLD</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>REQUIRED_XINPUT_HEAD_INDEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MIN</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.min must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_CUR</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.cur must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MAX</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.max must be present in the payload</li>
+</ul>
+</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_DESCRIPTOR_NAME</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.descriptor.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_HEADINGS</strong></h4>
+<ul>
+<li>$.message.order.items[<em>].xinput.head.headings[</em>] must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>init</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>INIT_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;init&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;init&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4><strong>INIT_PROVIDER_ID</strong></h4>
+<ul>
+<li><p>$.message.order.provider.id must be present in the payload</p>
+</li>
+<li><p><strong>INIT_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>INIT_XINPUT_PERSONAL_LOAN</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>REQUIRED_XINPUT_HEAD_INDEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MIN</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.min must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_CUR</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.cur must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MAX</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.max must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>on_init</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>ON_INIT_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_init&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_init&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_PROVIDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PROVIDER_ID</strong></h4>
+<ul>
+<li>$.message.order.provider.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_NAME</strong></h4>
+<ul>
+<li><p>$.message.order.provider.descriptor.name must be present in the payload</p>
+</li>
+<li><p><strong>REQUIRED_PROVIDER_TAGS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTACT_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.provider.tags[*].descriptor.code must be in [&quot;CONTACT_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_LSP_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.provider.tags[*].descriptor.code must be in [&quot;LSP_INFO&quot;]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_DESCRIPTOR_CODE</strong></h4>
+<ul>
+<li>All elements of $.message.order.items[*].descriptor.code must be in [&quot;LOAN&quot;, &quot;PERSONAL_LOAN&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_PRICE_VALUE</strong></h4>
+<ul>
+<li>$.message.order.items[*].price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_PRICE_CURRENCY</strong></h4>
+<ul>
+<li>All elements of $.message.order.items[*].price.currency must be in [&quot;INR&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_LOAN_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;LOAN_INFO&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_QUOTE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_QUOTE_ID</strong></h4>
+<ul>
+<li>$.message.order.quote.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_PRICE</strong></h4>
+<ul>
+<li>$.message.order.quote.price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_PRICE_CURRENCY</strong></h4>
+<ul>
+<li>All elements of $.message.order.quote.price.currency must be in [&quot;INR&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_TTL</strong></h4>
+<ul>
+<li>$.message.order.quote.ttl must be present in the payload</li>
+</ul>
+<h4><strong>VALID_QUOTE_TTL_REGEX</strong></h4>
+<ul>
+<li>All elements of $.message.order.quote.ttl must follow every regex in [&quot;^P(?:(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?|T\d+D)$&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_BREAKUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.quote.breakup[*].title must be in [&quot;PRINCIPAL&quot;, &quot;INTEREST&quot;, &quot;PROCESSING_FEE&quot;, &quot;OTHER_UPFRONT_CHARGES&quot;, &quot;INSURANCE_CHARGES&quot;, &quot;NET_DISBURSED_AMOUNT&quot;, &quot;OTHER_CHARGES&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_PAYMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_TYPE</strong></h4>
+<ul>
+<li>$.message.order.payments[*].type must be present in the payload</li>
+</ul>
+<h4><strong>VALID_PAYMENT_TYPE_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].type must be in [&quot;ON_ORDER&quot;, &quot;ON_FULFILLMENT&quot;, &quot;POST_FULFILLMENT&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_PAYMENTS_ON_ORDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_COLLECTED_BY</strong></h4>
+<ul>
+<li><p>$.message.order.payments[?(@.type==&#39;ON_ORDER&#39;)].collected_by must be present in the payload</p>
+</li>
+<li><p><strong>REQUIRED_PAYMENT_TAGS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_BUYER_FINDER_FEES_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.order.payments[?(@.type==&#39;ON_ORDER&#39;)].tags[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_SETTLEMENT_TERMS_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.order.payments[?(@.type==&#39;ON_ORDER&#39;)].tags[*].descriptor.code must be in [&quot;SETTLEMENT_TERMS&quot;]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_FULFILLMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_FULFILLMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].type must be in [&quot;LOAN&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].type is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_FULFILLMENT_CUSTOMER_PERSON_NAME</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].customer.person.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_FULFILLMENT_STATE_CODE</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].state.descriptor.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_INIT_XINPUT_PERSONAL_LOAN</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>REQUIRED_XINPUT_HEAD_INDEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MIN</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.min must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_CUR</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.cur must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_INDEX_MAX</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.index.max must be present in the payload</li>
+</ul>
+</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_DESCRIPTOR_NAME</strong></h4>
+<ul>
+<li>$.message.order.items[*].xinput.head.descriptor.name must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_XINPUT_HEAD_HEADINGS</strong></h4>
+<ul>
+<li>$.message.order.items[<em>].xinput.head.headings[</em>] must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>confirm</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONFIRM_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;confirm&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;confirm&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4><strong>CONFIRM_PROVIDER_ID</strong></h4>
+<ul>
+<li><p>$.message.order.provider.id must be present in the payload</p>
+</li>
+<li><p><strong>CONFIRM_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONFIRM_PAYMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_PARAMS_BANK_CODE</strong></h4>
+<ul>
+<li>$.message.order.payments[*].params.bank_code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_PARAMS_BANK_ACCOUNT</strong></h4>
+<ul>
+<li>$.message.order.payments[*].params.bank_account_number must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_PARAMS_VPA</strong></h4>
+<ul>
+<li>$.message.order.payments[*].params.virtual_payment_address must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>on_confirm</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>ON_CONFIRM_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_confirm&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_confirm&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_PROVIDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PROVIDER_ID</strong></h4>
+<ul>
+<li>$.message.order.provider.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PROVIDER_NAME</strong></h4>
+<ul>
+<li><p>$.message.order.provider.descriptor.name must be present in the payload</p>
+</li>
+<li><p><strong>REQUIRED_PROVIDER_TAGS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTACT_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.provider.tags[*].descriptor.code must be in [&quot;CONTACT_INFO&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_LSP_INFO_TAG_GROUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.provider.tags[*].descriptor.code must be in [&quot;LSP_INFO&quot;]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_ITEMS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ITEM_ID</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_DESCRIPTOR_CODE</strong></h4>
+<ul>
+<li>All elements of $.message.order.items[*].descriptor.code must be in [&quot;LOAN&quot;, &quot;PERSONAL_LOAN&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_ITEM_PRICE</strong></h4>
+<ul>
+<li>$.message.order.items[*].price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_LOAN_INFO_TAG</strong></h4>
+<ul>
+<li>At least one of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;LOAN_INFO&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_QUOTE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_QUOTE_ID</strong></h4>
+<ul>
+<li>$.message.order.quote.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_PRICE</strong></h4>
+<ul>
+<li>$.message.order.quote.price.value must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_BREAKUP</strong></h4>
+<ul>
+<li>At least one of $.message.order.quote.breakup[*].title must be in [&quot;PRINCIPAL&quot;, &quot;INTEREST&quot;, &quot;PROCESSING_FEE&quot;, &quot;OTHER_UPFRONT_CHARGES&quot;, &quot;INSURANCE_CHARGES&quot;, &quot;NET_DISBURSED_AMOUNT&quot;, &quot;OTHER_CHARGES&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_FULFILLMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_FULFILLMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].type must be in [&quot;LOAN&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].type is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_FULFILLMENT_STATE_DESCRIPTOR_CODE</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].state.descriptor.code must be present in the payload</li>
+</ul>
+<h4><strong>VALID_FULFILLMENT_STATE_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;DISBURSED&quot;, &quot;SANCTIONED&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_FULFILLMENT_CUSTOMER</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].customer.person.name must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_PAYMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].type must be in [&quot;ON_ORDER&quot;, &quot;ON_FULFILLMENT&quot;, &quot;POST_FULFILLMENT&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_STATUS</strong></h4>
+<ul>
+<li>$.message.order.payments[*].status must be present in the payload</li>
+</ul>
+<h4><strong>VALID_PAYMENT_STATUS_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].status must be in [&quot;PAID&quot;, &quot;NOT-PAID&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_PAYMENTS_COLLECTED_BY</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_COLLECTED_BY</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[?(@.type==&#39;ON_ORDER&#39;)].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_CONFIRM_DOCUMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_DOCUMENT_DESCRIPTOR_CODE</strong></h4>
+<ul>
+<li>$.message.order.documents[*].descriptor.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_DOCUMENT_URL</strong></h4>
+<ul>
+<li>$.message.order.documents[*].url must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_DOCUMENT_MIME_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.documents[*].mime_type must be in [&quot;application/pdf&quot;, &quot;text/html&quot;]</li>
+</ul>
+</li>
+</ul>
+<h4><strong>ON_CONFIRM_CANCELLATION_TERMS</strong></h4>
+<ul>
+<li>All elements of $.message.order.cancellation_terms[*].fulfillment_state.descriptor.code must be in [&quot;SANCTIONED&quot;, &quot;DISBURSED&quot;]</li>
+</ul>
+</li>
+<li><p><strong>update</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>UPDATE_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;update&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;update&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4><strong>UPDATE_ORDER_ID</strong></h4>
+<ul>
+<li><p>$.message.order.id must be present in the payload</p>
+</li>
+<li><p><strong>UPDATE_PAYMENT_TARGET</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].type must be in [&quot;POST_FULFILLMENT&quot;, &quot;ON_ORDER&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_TIME_LABEL</strong></h4>
+<ul>
+<li>$.message.order.payments[*].time.label must be present in the payload</li>
+</ul>
+<h4><strong>VALID_PAYMENT_TIME_LABEL_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].time.label must be in [&quot;PRE_PART_PAYMENT&quot;, &quot;INSTALLMENT&quot;, &quot;FORECLOSURE&quot;, &quot;MISSED_EMI_PAYMENT&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_PARAMS_AMOUNT</strong></h4>
+<ul>
+<li>$.message.order.payments[*].params.amount must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>UPDATE_PAYMENT_REF_ID_GOLD</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_REF_ID</strong></h4>
+<ul>
+<li>$.message.order.payments[*].tags[?(@.descriptor.code==&#39;LOAN_REPAYMENT&#39;)].list[?(@.descriptor.code==&#39;ref_id&#39;)].value must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>UPDATE_FULFILLMENT_TARGET</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_FULFILLMENT_STATE_CODE</strong></h4>
+<ul>
+<li>$.message.order.fulfillments[*].state.descriptor.code must be present in the payload</li>
+</ul>
+<h4><strong>VALID_FULFILLMENT_STATE_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;INITIATED&quot;, &quot;SANCTIONED&quot;, &quot;DISBURSED&quot;, &quot;PENDING&quot;, &quot;REJECTED&quot;, &quot;COMPLETED&quot;, &quot;CONSENT_REQUIRED&quot;, &quot;APPROVED&quot;]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>on_update</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>ON_UPDATE_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_update&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_update&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_UPDATE_ORDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ORDER_ID</strong></h4>
+<ul>
+<li>$.message.order.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ORDER_PROVIDER_ID</strong></h4>
+<ul>
+<li>$.message.order.provider.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ORDER_ITEMS</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_UPDATE_FULFILLMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_FULFILLMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].type must be in [&quot;LOAN&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].type is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_FULFILLMENT_STATE_CODE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;INITIATED&quot;, &quot;SANCTIONED&quot;, &quot;DISBURSED&quot;, &quot;PENDING&quot;, &quot;REJECTED&quot;, &quot;COMPLETED&quot;, &quot;CONSENT_REQUIRED&quot;, &quot;APPROVED&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_UPDATE_PAYMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_TYPE</strong></h4>
+<ul>
+<li>$.message.order.payments[*].type must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_STATUS</strong></h4>
+<ul>
+<li>$.message.order.payments[*].status must be present in the payload</li>
+</ul>
+<h4><strong>VALID_PAYMENT_STATUS_ENUM</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].status must be in [&quot;PAID&quot;, &quot;NOT-PAID&quot;, &quot;FAILED&quot;, &quot;DELAYED&quot;, &quot;DEFERRED&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_UPDATE_QUOTE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_QUOTE_BREAKUP_TITLE</strong></h4>
+<ul>
+<li>$.message.order.quote.breakup[*].title must be present in the payload</li>
+</ul>
+<h4><strong>VALID_QUOTE_BREAKUP_TITLE_ON_UPDATE_ENUM</strong></h4>
+<ul>
+<li>At least one of $.message.order.quote.breakup[*].title must be in [&quot;PRINCIPAL&quot;, &quot;INTEREST&quot;, &quot;PROCESSING_FEE&quot;, &quot;OTHER_UPFRONT_CHARGES&quot;, &quot;INSURANCE_CHARGES&quot;, &quot;NET_DISBURSED_AMOUNT&quot;, &quot;OTHER_CHARGES&quot;, &quot;LATE_FEE_AMOUNT&quot;, &quot;OUTSTANDING_PRINCIPAL&quot;, &quot;FORCLOSUER_CHARGES&quot;, &quot;OUTSTANDING_INTEREST&quot;, &quot;PRE_PAYMENT_CHARGE&quot;, &quot;INSURANCE_TOTAL_FEE&quot;, &quot;INSURANCE_PRODUCT_FEE&quot;, &quot;TAX&quot;]</li>
+</ul>
+<h4><strong>REQUIRED_QUOTE_BREAKUP_PRICE</strong></h4>
+<ul>
+<li>$.message.order.quote.breakup[*].price.value must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>status</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>STATUS_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;status&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;status&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>STATUS_ORDER_ID_PERSONAL_LOAN</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_STATUS_ORDER_ID</strong></h4>
+<ul>
+<li>$.message.order_id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>STATUS_REF_ID_GOLD_LOAN</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_STATUS_REF_ID</strong></h4>
+<ul>
+<li>$.message.ref_id must be present in the payload</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>on_status</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>ON_STATUS_CONTEXT</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>CONTEXT_REQUIRED</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>$.context.location.country.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>$.context.location.city.code must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>$.context.domain must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>$.context.timestamp must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>$.context.bap_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>$.context.bap_uri must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_BPP_ID</strong></h4>
+<ul>
+<li>$.context.bpp_id must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_status&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_BPP_URI</strong></h4>
+<ul>
+<li>$.context.bpp_uri must be present in the payload</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- all elements of [&quot;on_status&quot;] are in [&quot;search&quot;]
+</code></pre>
+</blockquote>
+<h4><strong>REQUIRED_CONTEXT_TRANSACTION_ID</strong></h4>
+<ul>
+<li>$.context.transaction_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_MESSAGE_ID</strong></h4>
+<ul>
+<li>$.context.message_id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_VERSION</strong></h4>
+<ul>
+<li>$.context.version must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_CONTEXT_TTL</strong></h4>
+<ul>
+<li>$.context.ttl must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>CONTEXT_ENUM</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_CONTEXT_LOCATION_COUNTRY_CODE</strong></h4>
+<ul>
+<li>At least one of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.country.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>VALID_CONTEXT_DOMAIN</strong></h4>
+<ul>
+<li>All elements of $.context.domain must be in [&quot;ONDC:FIS12&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.domain is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>CONTEXT_REGEX</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REGEX_CONTEXT_LOCATION_CITY_CODE</strong></h4>
+<ul>
+<li>All elements of $.context.location.city.code must follow every regex in [&quot;^*$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.location.city.code is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TIMESTAMP</strong></h4>
+<ul>
+<li>All elements of $.context.timestamp must follow every regex in [&quot;^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.timestamp is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_ID</strong></h4>
+<ul>
+<li>All elements of $.context.bap_id must follow every regex in [&quot;^(?!.*\b(?:http|https|www)\b)[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)+$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_id is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_BAP_URI</strong></h4>
+<ul>
+<li>All elements of $.context.bap_uri must follow every regex in [&quot;^https?://([a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)<em>|localhost)(:\d+)?(/.</em>)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.bap_uri is not in the payload
+</code></pre>
+</blockquote>
+<h4><strong>REGEX_CONTEXT_TTL</strong></h4>
+<ul>
+<li>All elements of $.context.ttl must follow every regex in [&quot;^P(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.context.ttl is not in the payload
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>ON_STATUS_ORDER</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_ORDER_PROVIDER_ID</strong></h4>
+<ul>
+<li>$.message.order.provider.id must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_ORDER_ITEMS</strong></h4>
+<ul>
+<li>$.message.order.items[*].id must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>ON_STATUS_FULFILLMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_FULFILLMENT_TYPE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].type must be in [&quot;LOAN&quot;]</li>
+</ul>
+<blockquote>
+<p><strong>Skip if:</strong></p>
+<pre><code>- $.message.order.fulfillments[*].type is not in the payload
+</code></pre>
+</blockquote>
+</li>
+<li><p><strong>ON_STATUS_FULFILLMENT_STATE</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>VALID_FULFILLMENT_STATE_CODE</strong></h4>
+<ul>
+<li>All elements of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;INITIATED&quot;, &quot;SANCTIONED&quot;, &quot;DISBURSED&quot;, &quot;PENDING&quot;, &quot;REJECTED&quot;, &quot;COMPLETED&quot;, &quot;CONSENT_REQUIRED&quot;, &quot;APPROVED&quot;]</li>
+</ul>
+</li>
+<li><p><strong>ON_STATUS_PAYMENTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<h4><strong>REQUIRED_PAYMENT_TYPE</strong></h4>
+<ul>
+<li>$.message.order.payments[*].type must be present in the payload</li>
+</ul>
+<h4><strong>REQUIRED_PAYMENT_STATUS</strong></h4>
+<ul>
+<li>All elements of $.message.order.payments[*].status must be in [&quot;PAID&quot;, &quot;NOT-PAID&quot;, &quot;FAILED&quot;, &quot;DELAYED&quot;, &quot;DEFERRED&quot;]</li>
+</ul>
+</li>
+</ul>
+<h4><strong>ON_STATUS_QUOTE</strong></h4>
+<ul>
+<li>At least one of $.message.order.quote.breakup[*].title must be in [&quot;PRINCIPAL&quot;, &quot;INTEREST&quot;, &quot;PROCESSING_FEE&quot;, &quot;OTHER_UPFRONT_CHARGES&quot;, &quot;INSURANCE_CHARGES&quot;, &quot;NET_DISBURSED_AMOUNT&quot;, &quot;OTHER_CHARGES&quot;, &quot;LATE_FEE_AMOUNT&quot;, &quot;OUTSTANDING_PRINCIPAL&quot;, &quot;FORCLOSUER_CHARGES&quot;, &quot;OUTSTANDING_INTEREST&quot;, &quot;PRE_PAYMENT_CHARGE&quot;, &quot;INSURANCE_TOTAL_FEE&quot;, &quot;INSURANCE_PRODUCT_FEE&quot;, &quot;TAX&quot;]</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all list items that have a nested <ul> (collapsible items)
+        const collapsibleItems = document.querySelectorAll('li > ul');
+
+        collapsibleItems.forEach(function(nestedList) {
+            const parentLi = nestedList.parentElement;
+            parentLi.classList.add('collapsible', 'collapsed');
+
+            // Add click event listener to the <p> inside the list item
+            const clickableArea = parentLi.querySelector('p');
+            clickableArea.addEventListener('click', function(e) {
+                // Prevent click events on links inside the <p>
+                if (e.target.tagName !== 'A') {
+                    parentLi.classList.toggle('collapsed');
+                }
+            });
+        });
+    });
+</script>
+</html>
