@@ -110,7 +110,7 @@ function createAdapterYaml(params: AdapterParams) {
     };
 
     const ondcWorkbenchPlugin = (role: string, type: string) => {
-        return {
+        const data = {
             id: "workbench",
             config: {
                 protocolVersion: params.version,
@@ -119,10 +119,14 @@ function createAdapterYaml(params: AdapterParams) {
                 moduleType: type,
                 configServiceURL: params.configServiceURL,
                 mockServiceURL: params.mockServiceURL,
-                transactionPropertiesPath:
-                    "./config/transaction_properties.yaml",
+                ...(params.transactionProperties !== undefined && {
+                    transactionPropertiesPath:
+                        "./config/transaction_properties.yaml",
+                }),
             },
         };
+
+        return data;
     };
 
     const receiverHandler = (role: string, type: string) => {
