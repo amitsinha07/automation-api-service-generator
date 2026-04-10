@@ -25,11 +25,11 @@ COPY temp/schemas ./schemas
 COPY temp/config ./config
 # COPY temp/validationpkg ./validationpkg
 
-# Copy .env file if exists
-# COPY .env ./.env
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Expose port (adjust if needed)
 # EXPOSE 8080
 
-# Run the server with config
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["./server", "--config=./config/adapter.yaml"]

@@ -221,11 +221,21 @@ async function copyDockerAndComposeFiles() {
     );
     const destDockerfile = path.resolve(BUILD_OUTPUT, "Dockerfile");
     fs.copyFileSync(sourceDockerfile, destDockerfile);
+
+    const sourceEntrypoint = path.resolve(
+        __dirname,
+        "../../../src/go-template/onix-config-templates/docker-entrypoint.sh",
+    );
+    const destEntrypoint = path.resolve(BUILD_OUTPUT, "docker-entrypoint.sh");
+    fs.copyFileSync(sourceEntrypoint, destEntrypoint);
+
     const sourceComposeFile = path.resolve(
         __dirname,
         "../../../src/go-template/onix-config-templates/docker-compose.yml",
     );
     const destComposeFile = path.resolve(BUILD_OUTPUT, "docker-compose.yml");
     fs.copyFileSync(sourceComposeFile, destComposeFile);
-    console.log(`pasted to ${destDockerfile} and ${destComposeFile}`);
+    console.log(
+        `pasted to ${destDockerfile}, ${destEntrypoint} and ${destComposeFile}`,
+    );
 }
