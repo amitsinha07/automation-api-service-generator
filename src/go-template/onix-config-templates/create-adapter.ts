@@ -137,7 +137,10 @@ function createAdapterYaml(params: AdapterParams) {
             plugins: {
                 cache: cachePlugin,
                 keyManager: keymanger,
-                middleware: [getMiddlwarePlugin("np_no_config")],
+                middleware: [
+                    { id: "encryptionmiddleware" },
+                    getMiddlwarePlugin("np_no_config")
+                ],
                 router: getRounterPlugin("np_router"),
                 schemaValidator: schemaPlugin,
                 ondcValidator: ondcValidatorPlugin,
@@ -166,7 +169,12 @@ function createAdapterYaml(params: AdapterParams) {
         plugins: {
             cache: cachePlugin,
             keyManager: keymanger,
-            middleware: [getMiddlwarePlugin("mock_no_config")],
+            middleware: [
+                getMiddlwarePlugin("mock_no_config"),
+            ],
+            transportWrapper: {
+                id: "outgoingencryptionmiddleware",
+            },
             router: getRounterPlugin("mock_router"),
             schemaValidator: schemaPlugin,
             ondcValidator: ondcValidatorPlugin,
